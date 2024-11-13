@@ -5,7 +5,9 @@ class PassiveStateExampleModel extends SignalModel {
   final Signal<int> counter = signal(0);
 
   PassiveStateExampleModel() {
-    computedValue = Computed<int>(() => 0);
+    computedValue = computed(
+      () => counter.value,
+    );
     init();
   }
 
