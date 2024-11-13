@@ -1,28 +1,28 @@
-import 'package:example/signals_examples/passive/signals/passive_state_example_model.dart';
-import 'package:example/signals_examples/reactive/reactive_state_example.dart';
+import 'package:example/signals_examples/passive/passive_state_example.dart';
+import 'package:example/signals_examples/reactive/signals/reactive_state_example_model.dart';
 import 'package:flutter/material.dart';
 import 'package:onix_flutter_signals/onix_flutter_signals.dart';
 import 'package:signals/signals_flutter.dart';
 
-class PassiveStateExample extends StatefulWidget {
-  const PassiveStateExample({super.key});
+class ReactiveStateExample extends StatefulWidget {
+  const ReactiveStateExample({super.key});
 
   @override
-  State<PassiveStateExample> createState() => _PassiveStateExampleState();
+  State<ReactiveStateExample> createState() => _ReactiveStateExampleState();
 }
 
-class _PassiveStateExampleState
-    extends PassiveSignalState<PassiveStateExampleModel, PassiveStateExample> {
+class _ReactiveStateExampleState extends ReactiveSignalState<
+    ReactiveStateExampleModel, ReactiveStateExample> {
   @override
-  PassiveStateExampleModel createModel() {
-    return PassiveStateExampleModel();
+  ReactiveStateExampleModel createModel() {
+    return ReactiveStateExampleModel();
   }
 
   @override
   Widget buildWidget(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Passive State Example'),
+        title: const Text('Reactive State Example'),
       ),
       body: Center(
         child: Column(
@@ -32,7 +32,8 @@ class _PassiveStateExampleState
               'You have pushed the button this many times:',
             ),
 
-            /// This is a passive signal, so it will not update the child widget
+            /// This is a passive signal, but with ReactiveSignalState it will
+            /// update the child widget
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -47,7 +48,8 @@ class _PassiveStateExampleState
               ],
             ),
 
-            /// This is a reactive signal, so it will update the child widget
+            /// No need to wrap the Text widget with a SignalWatch widget
+            /// because ReactiveSignalState will update the child widget
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -69,9 +71,9 @@ class _PassiveStateExampleState
             ElevatedButton(
                 onPressed: () =>
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const ReactiveStateExample(),
+                      builder: (context) => const PassiveStateExample(),
                     )),
-                child: const Text('Switch to ReactiveState')),
+                child: const Text('Switch to PassiveState')),
           ],
         ),
       ),
