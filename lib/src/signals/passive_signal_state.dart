@@ -4,14 +4,15 @@ import 'package:signals/signals_flutter.dart';
 
 abstract class PassiveSignalState<M extends SignalModel,
     W extends StatefulWidget> extends State<W> {
-  late Signal<M> state;
+  late final Signal<M> state;
+  late final M model;
   M get stateSignals => state.value;
 
   @override
   void initState() {
     super.initState();
 
-    final model = createModel();
+    model = createModel();
 
     state = signal(model);
   }
