@@ -14,9 +14,7 @@ class PassiveStateExample extends StatefulWidget {
 class _PassiveStateExampleState
     extends PassiveSignalState<PassiveStateExampleModel, PassiveStateExample> {
   @override
-  PassiveStateExampleModel createModel() {
-    return PassiveStateExampleModel();
-  }
+  PassiveStateExampleModel createModel() => PassiveStateExampleModel();
 
   @override
   Widget buildWidget(BuildContext context) {

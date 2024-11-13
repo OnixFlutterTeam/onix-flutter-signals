@@ -1,39 +1,44 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+This package contains some base classes designed to improve experience of using Signals state
+management.
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- `PassiveSignalState` - a state class that doesn't automatically rebuild the widget on model changes. You have to wrap widgets that should be rebuilt with `Watch` or `Watch.builder`. There is also the .watch(context) extension method that can be used to rebuild a widget when a signal changes.
+- `ReactiveSignalState` - a state class that automatically rebuilds the widget on model changes. It uses `Watch` widget under the hood.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Extend your ScreenModel class from `SignalModel`:
 
-```dart
-const like = 'sample';
+```
+class MainScreenModel extends SignalModel {
 ```
 
-## Additional information
+Extend your stateful widget state from `PassiveSignalState` to manually control widget rebuilds:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```
+class _MainScreenState
+    extends PassiveSignalState<MainScreenModel, MainScreen>
+```
+
+or `ReactiveSignalState` to automatically rebuild widget on model changes:
+
+```
+class _MainScreenState
+    extends ReactiveSignalState<MainScreenModel, MainScreen>
+```
+
+Create Model instance in `createModel` function:
+
+```
+MainScreenModel createModel() => MainScreenModel();
+```
+
+Write you widget body in `buildWidget` instead of `build`
+
+```
+  @override
+  Widget buildWidget(BuildContext context) {
+  	return Scaffold(...);
+  }
+```

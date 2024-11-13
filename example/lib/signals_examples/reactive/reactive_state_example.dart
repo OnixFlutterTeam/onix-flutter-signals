@@ -14,9 +14,7 @@ class ReactiveStateExample extends StatefulWidget {
 class _ReactiveStateExampleState extends ReactiveSignalState<
     ReactiveStateExampleModel, ReactiveStateExample> {
   @override
-  ReactiveStateExampleModel createModel() {
-    return ReactiveStateExampleModel();
-  }
+  ReactiveStateExampleModel createModel() => ReactiveStateExampleModel();
 
   @override
   Widget buildWidget(BuildContext context) {

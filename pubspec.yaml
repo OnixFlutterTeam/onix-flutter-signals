@@ -1,7 +1,7 @@
 name: onix_flutter_signals
-description: "A new Flutter project."
+description: "Onix Flutter Signals"
 version: 0.0.1
-homepage:
+repository: https://github.com/OnixFlutterTeam/onix-flutter-signals
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
