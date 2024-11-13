@@ -8,7 +8,8 @@ management.
 
 ## Usage
 
-To use this package, add `signals` as a dependency in your pubspec.yaml file.
+To use this package, add <a href="https://pub.dev/packages/signals">Signals</a> as a dependency in your pubspec.yaml file.
+
 
 Extend your ScreenModel class from `SignalModel`:
 
