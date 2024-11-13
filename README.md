@@ -3,7 +3,7 @@
 This package contains some base classes designed to improve experience of using Signals state
 management.
 
-- `PassiveSignalState` - a state class that doesn't automatically rebuild the widget on model changes. You have to wrap widgets that should be rebuilt with `Watch` or `Watch.builder`. There is also the .watch(context) extension method that can be used to rebuild a widget when a signal changes.
+- `PassiveSignalState` - a state class that doesn't automatically rebuild the widget on model changes. You have to wrap widgets that should be rebuilt with `Watch` or `Watch.builder`. There is also the `.watch(context)` extension method that can be used to rebuild a widget when a signal changes.
 - `ReactiveSignalState` - a state class that automatically rebuilds the widget on model changes. It uses `Watch` widget under the hood.
 
 ## Usage
